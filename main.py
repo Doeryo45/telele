@@ -4,11 +4,11 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-# Load API credentials from environment variables
+
 API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
 
-# Load user credentials from a `.json` file
+
 with open("users.json") as f:
     users = json.load(f)
 
@@ -20,7 +20,7 @@ def process_message():
     if auth_username not in users:
         return jsonify({"error": "Unauthorized user"}), 403
 
-    # Get user's phone and username
+    
     user_data = users[auth_username]
     phone = user_data["phone"]
     username = user_data["username"]
